@@ -1,0 +1,30 @@
+% Define the time vector
+t = 0:0.01:2*pi;  % from 0 to 2*pi with increments of 0.01
+
+% Define the function, a sine wave in this case
+f = sin(2 * pi * 5 * t);  % 5 Hz sine wave
+
+% Plot the original function
+figure;
+subplot(2,1,1);
+plot(t, f);
+title('Original Function: 5 Hz Sine Wave');
+xlabel('Time');
+ylabel('Amplitude');
+
+% Compute the Fourier Transform
+F = fft(f);
+
+% Frequency vector
+n = length(t); % number of samples
+freq = (0:n-1)*(1/(n*0.01)); % frequency range
+
+% Plot the Fourier Transform (magnitude)
+subplot(2,1,2);
+plot(freq, abs(F));
+title('Fourier Transform');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+xlim([0 20]); % limit x-axis to 20 Hz for better visualization
+x = -pi:0.1:pi;
+plot(x, cos(x))
